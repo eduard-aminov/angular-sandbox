@@ -1,0 +1,17 @@
+.editor {
+  outline: none;
+  border: 1px solid grey;
+  min-height: 100px;
+  width: 800px;
+  margin-bottom: 30px;
+
+  &:focus, &:active {
+    border: 1px solid black;
+  }
+
+  &-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

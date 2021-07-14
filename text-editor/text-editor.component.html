@@ -1,0 +1,14 @@
+<div class="editor-toolbar">
+  <button (click)="toggleBold()">Bold</button>
+  <button (click)="toggleItalic()">Italic</button>
+  <button (click)="selectAll()">SelectAll</button>
+  <button (click)="setBackColor()">BackColor</button>
+  <button (click)="setEditorBackColor()">EditorBackColor</button>
+</div>
+<div
+  #editor
+  [contentEditable]="true"
+  (input)="onInput()"
+  class="editor"
+></div>
+<div>{{editorValue}}</div>

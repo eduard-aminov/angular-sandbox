@@ -1,0 +1,12 @@
+<table>
+  <thead>
+  <tr>
+    <th sezTh [cols]="columnOptions.columns"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cell of data">
+    <td *ngFor="let data of cell | keyvalue:originalOrder">{{data.value}}</td>
+  </tr>
+  </tbody>
+</table>

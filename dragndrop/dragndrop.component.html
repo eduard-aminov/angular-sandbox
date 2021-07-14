@@ -1,0 +1,27 @@
+<div class="example-parent">
+  <div class="example-origin"
+       #dropzone
+       (dragover)="onDragOverDropzone($event)"
+       (drop)="onDrop()"
+  >
+    <div
+      *ngFor="let item of [1,2,3,4,5]; let index = index"
+      [id]="'draggable-' + index"
+      class="example-draggable"
+      draggable="true"
+      (dragstart)="onDragStart($event)"
+      (dragover)="onDragOverElement($event)"
+      (dragleave)="onDragLeaveElement($event)"
+    >
+     item-{{index + 1}}
+    </div>
+  </div>
+
+  <div
+    class="example-dropzone"
+    (dragover)="onDragOverDropzone($event)"
+    (drop)="onDrop()"
+  >
+    dropzone
+  </div>
+</div>

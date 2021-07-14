@@ -1,0 +1,8 @@
+<button (click)="createComponent()">Click</button>
+<ng-container *ngIf="childComponent">
+  <ng-template
+    [appLazyComponent]="childComponent | async"
+    [inputs]="childComponentInputs"
+    [outputs]="childComponentOutputs"
+  ></ng-template>
+</ng-container>
