@@ -1,4 +1,4 @@
-import { Injector, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,8 +9,10 @@ import { SharedModule } from './shared/shared.module';
 import { ButtonModule } from '@sezinno-ui/core';
 import { TableComponent } from './table/table.component';
 import { TablePageComponent } from './table-page/table-page.component';
-import { SezThDirective } from './table/sez-th.directive';
-import { SezThComponent } from './table/sez-th.component';
+import { CellDirective } from './table/cell.directive';
+import { CurryModule } from './curry/curry.module';
+import { LtviewModule } from './ltview/ltview.module';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,17 @@ import { SezThComponent } from './table/sez-th.component';
     TextEditorComponent,
     TableComponent,
     TablePageComponent,
-    SezThDirective,
-    SezThComponent
+    CellDirective,
+    RxjsComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SharedModule,
-        ButtonModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    ButtonModule,
+    CurryModule,
+    LtviewModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

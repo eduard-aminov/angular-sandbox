@@ -1,12 +1,17 @@
 <table>
   <thead>
   <tr>
-    <th sezTh [cols]="columnOptions.columns"></th>
+    <th *ngFor="let col of options?.cols">{{col.colName}}</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let cell of data">
-    <td *ngFor="let data of cell | keyvalue:originalOrder">{{data.value}}</td>
+    <ng-container *ngFor="let data of cell | keyvalue:originalOrder">
+<!--      <ng-container *ngTemplateOutlet="getTemplate(data.key!) || plain"></ng-container>-->
+      <ng-template #plain>
+        <td>{{data.value}}</td>
+      </ng-template>
+    </ng-container>
   </tr>
   </tbody>
 </table>
