@@ -14,6 +14,13 @@ export class InvalidPathError extends Error {
   }
 }
 
+export class KeyNotFoundError extends Error {
+  constructor(decoratorName: string, propName: string, key: string) {
+    super(getErrorPrefix(decoratorName, propName) + `Cannot find [${key}] prop in dto`);
+    this.name = 'KeyNotFoundError';
+  }
+}
+
 export class EmptyModelError extends Error {
   constructor(decoratorName: string, propName: string) {
     super(getErrorPrefix(decoratorName, propName) + 'You must pass model type as second argument');

@@ -7,22 +7,13 @@ export enum AutoMapperMetadata {
 
 export enum AutoMapperDecorator {
   Prop = '@Prop',
+  Merge = '@Merge',
 }
 
 export interface AutoMapperPropMetadata {
   decoratorName: string;
   propName: string;
   path: string;
+  paths: string[];
   transformer?: TransformerFn;
-  model?: Type<any>;
-}
-
-export interface Mappable {
-  toCreateDto(): void;
-
-  toUpdateDto?(): void;
-
-  toPartialUpdateDto?(): void;
-
-  toDeleteDto?(): void;
 }

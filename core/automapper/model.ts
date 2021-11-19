@@ -1,17 +1,23 @@
 import { AutoMapperDecorator, AutoMapperMetadata, AutoMapperPropMetadata } from './types';
-import { EmptyPathError, InvalidPathError } from './errors';
+import { EmptyPathError, KeyNotFoundError } from './errors';
 
 type Map<T> = { [key: string]: T };
 
-const getValueFromPath = (path: string, obj: Map<any>) => {
-  return path.split('.').reduce((acc, cur) => acc[cur], obj);
+const getKeyValueFromPath = (path: string, obj: Map<any>, decoratorName: string, propName: string): [string, Map<any>] => {
+  return path
+    .split('.')
+    .reduce((acc, cur) => {
+      const value = acc[1][cur];
+      if (value === undefined) { throw new KeyNotFoundError(decoratorName, propName, cur); }
+      return [cur, value];
+    }, ['', obj]);
 };
 
 export abstract class Model {
   constructor(data: Map<any>) {
     const metadata = this.constructor.prototype[AutoMapperMetadata.PropMetadata];
     for (const [key, value] of Object.entries<AutoMapperPropMetadata>(metadata)) {
-      const {propName, decoratorName, path, transformer, model} = value;
+      const {propName, decoratorName, path, paths, transformer} = value;
 
       if (!key) { throw new EmptyPathError(decoratorName, propName); }
 
@@ -19,9 +25,14 @@ export abstract class Model {
 
       switch (decoratorName) {
         case AutoMapperDecorator.Prop:
-          const value = getValueFromPath(path, data);
-          if (value === undefined) { throw new InvalidPathError(decoratorName, propName); }
-          resultValue = value;
+          resultValue = getKeyValueFromPath(path, data, decoratorName, propName)[1];
+          break;
+        case AutoMapperDecorator.Merge:
+          resultValue = paths.reduce((acc, cur) => {
+            const [key, value] = getKeyValueFromPath(cur, data, decoratorName, propName);
+            return {...acc, [key]: value};
+          }, {});
+          break;
       }
 
       (this as Map<any>)[propName] = transformer ? transformer(resultValue) : resultValue;

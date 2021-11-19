@@ -7,17 +7,27 @@ import { User } from './user.model';
 const USER_MOCK: UserDto = {
   is_superuser: true,
   last_login: new Date().toString(),
-  // user_permissions: ['TEST'],
+  user_permissions: [
+    {id: 1, name: 'admin'},
+    {id: 2, name: 'moderator'},
+  ],
   groups: ['ADMIN', 'USER'],
   id: 1,
-  // last_name: 'Aminov',
-  // first_name: 'Eduard',
+  deep: {
+    one: {
+      two: {
+        value: 'text',
+      }
+    }
+  },
+  last_name: 'Aminov',
+  first_name: 'Eduard',
+  middle_name: 'Egorovich',
   // birth_date: '16.02.1998',
   // date_joined: new Date().toString(),
   // email: 'eduard@mail.ru',
   // is_phone_confirmed: true,
   // is_staff: true,
-  // middle_name: 'Egorovich',
   // moderation_comment: 'comment',
   // moderation_status: 'accept',
   // phone: '89993452356',

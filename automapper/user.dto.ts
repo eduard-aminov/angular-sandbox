@@ -1,19 +1,27 @@
-import { User } from './user.model';
+import { Permission, User } from './user.model';
 
 export interface UserDto {
   id?: number;
   groups?: string[];
   last_login?: string;
   is_superuser?: boolean;
+  deep?: {
+    one?: {
+      two?: {
+        value?: string;
+      }
+    }
+  };
+  user_permissions?: PermissionDto[];
   // moderation_comment?: string;
   // moderation_status?: string;
   // username?: string;
   // email?: string;
   // is_staff?: boolean;
   // date_joined?: string;
-  // first_name?: string;
-  // last_name?: string;
-  // middle_name?: string;
+  first_name?: string;
+  last_name?: string;
+  middle_name?: string;
   // birth_date?: string;
   // phone?: string;
   // is_phone_confirmed?: boolean;
@@ -34,3 +42,8 @@ export const toCreateUserDto = (model: Required<User>): CreateUserDto => ({
   last_login: model.lastLogin ?? new Date(),
   is_superuser: model.isSuperuser ?? false,
 });
+
+export interface PermissionDto {
+  id?: number;
+  name?: string;
+}
