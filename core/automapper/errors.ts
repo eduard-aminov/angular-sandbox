@@ -1,4 +1,4 @@
-import { getErrorPrefix } from './utils';
+const getErrorPrefix = (decoratorName: string, propName: string) => `[${decoratorName} => ${propName}]: `;
 
 export class EmptyPathError extends Error {
   constructor(decoratorName: string, propName: string) {
@@ -7,30 +7,9 @@ export class EmptyPathError extends Error {
   }
 }
 
-export class InvalidPathError extends Error {
-  constructor(decoratorName: string, propName: string) {
-    super(getErrorPrefix(decoratorName, propName) + `Please check if path is correct.`);
-    this.name = 'InvalidPathError';
-  }
-}
-
 export class KeyNotFoundError extends Error {
   constructor(decoratorName: string, propName: string, key: string) {
     super(getErrorPrefix(decoratorName, propName) + `Cannot find [${key}] prop in dto`);
     this.name = 'KeyNotFoundError';
-  }
-}
-
-export class EmptyModelError extends Error {
-  constructor(decoratorName: string, propName: string) {
-    super(getErrorPrefix(decoratorName, propName) + 'You must pass model type as second argument');
-    this.name = 'EmptyModelError';
-  }
-}
-
-export class UniqPathError extends Error {
-  constructor(decoratorName: string, propName: string) {
-    super(getErrorPrefix(decoratorName, propName) + 'Path must have not duplicate');
-    this.name = 'UniqPathError';
   }
 }

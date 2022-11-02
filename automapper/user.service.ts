@@ -8,13 +8,14 @@ const USER_MOCK: UserDto = {
   is_superuser: true,
   last_login: new Date().toString(),
   user_permissions: [
-    {id: 1, name: 'admin'},
-    {id: 2, name: 'moderator'},
+    {id_test: 1, name_test: 'admin'},
+    {id_test: 2, name_test: 'moderator'},
   ],
   groups: ['ADMIN', 'USER'],
   id: 1,
   deep: {
     one: {
+      middle_name: 'Egorovich',
       two: {
         value: 'text',
       }
@@ -22,7 +23,7 @@ const USER_MOCK: UserDto = {
   },
   last_name: 'Aminov',
   first_name: 'Eduard',
-  middle_name: 'Egorovich',
+  // middle_name: 'Egorovich',
   // birth_date: '16.02.1998',
   // date_joined: new Date().toString(),
   // email: 'eduard@mail.ru',

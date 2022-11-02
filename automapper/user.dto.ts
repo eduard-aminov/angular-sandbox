@@ -1,4 +1,4 @@
-import { Permission, User } from './user.model';
+import { PermissionDto } from './permission.model';
 
 export interface UserDto {
   id?: number;
@@ -7,43 +7,14 @@ export interface UserDto {
   is_superuser?: boolean;
   deep?: {
     one?: {
+      middle_name?: string;
       two?: {
         value?: string;
       }
     }
   };
   user_permissions?: PermissionDto[];
-  // moderation_comment?: string;
-  // moderation_status?: string;
-  // username?: string;
-  // email?: string;
-  // is_staff?: boolean;
-  // date_joined?: string;
   first_name?: string;
   last_name?: string;
   middle_name?: string;
-  // birth_date?: string;
-  // phone?: string;
-  // is_phone_confirmed?: boolean;
-  // settlement?: string;
-  // region?: string;
-  // user_permissions?: string[];
-  // place_of_work?: string;
-}
-
-export type CreateUserDto = UserDto;
-export type UpdateUserDto = UserDto;
-export type PartialUpdateUserDto = Partial<UserDto>;
-export type DeleteUserDto = Pick<UserDto, 'id'>;
-
-export const toCreateUserDto = (model: Required<User>): CreateUserDto => ({
-  id: +model.id ?? 0,
-  groups: model.groups ?? [],
-  last_login: model.lastLogin ?? new Date(),
-  is_superuser: model.isSuperuser ?? false,
-});
-
-export interface PermissionDto {
-  id?: number;
-  name?: string;
 }
