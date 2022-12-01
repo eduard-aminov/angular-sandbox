@@ -13,6 +13,10 @@ import { CellDirective } from './table/cell.directive';
 import { CurryModule } from './curry/curry.module';
 import { LtviewModule } from './ltview/ltview.module';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { MasonryPageComponent } from './masonry/masonry-page/masonry-page.component';
+import { MasonryAreaComponent } from './masonry/masonry-area/masonry-area.component';
+import { CardComponent } from './masonry/card/card.component';
+import { TradingViewComponent } from './trading-view/trading-view.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     TablePageComponent,
     CellDirective,
     RxjsComponent,
+    MasonryPageComponent,
+    MasonryAreaComponent,
+    CardComponent,
+    TradingViewComponent,
   ],
   imports: [
     BrowserModule,

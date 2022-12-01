@@ -7,6 +7,8 @@ import { CurryComponent } from './curry/curry.component';
 import { LtviewComponent } from './ltview/ltview.component';
 import { AutomapperComponent } from './automapper/automapper.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { MasonryPageComponent } from './masonry/masonry-page/masonry-page.component';
+import { TradingViewComponent } from './trading-view/trading-view.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,12 @@ const routes: Routes = [
   },
   {
     path: 'rxjs', component: RxjsComponent,
+  },
+  {
+    path: 'trading-view', component: TradingViewComponent,
+  },
+  {
+    path: 'masonry', component: MasonryPageComponent,
   },
   {path: 'lazy', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule)},
   {path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule)}
